@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style-home.css}">
+    <title>Title page</title>
+</head>
+<body>
+<div class="header">
+    Добро пожаловать на сайт о ПК8000!
+</div>
+
+<div class="container">
+    <div class="image">
+        <img th:src="'data:image/png;base64,' + ${imageBase64}" alt="Image" />
+    </div>
+    <div class="text-area">
+        <pre th:text="${fileContent}"></pre> <!-- Отображение содержимого текстового файла -->
+    </div>
+</div>
+
+<div class="footer">
+    Реклама: Невероятные скидки на всё! <a href="https://gb.ru" target="_blank">Узнайте больше на gb.ru</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+server:
+  port: 8070
+
+spring:
+  application:
+    name: "Resource-server"
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8090

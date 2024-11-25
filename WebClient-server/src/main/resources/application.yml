@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: "WebClient-server"
+
+  security:
+    oauth2:
+      client:
+        provider:
+          spring:
+            issuer-uri: http://localhost:8090
+        registration:
+          apm-client:
+            provider: spring
+            client-id: client
+            client-secret: "secret"
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_basic
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - openid
+              - user.read
+  output.ansi.enabled: ALWAYS

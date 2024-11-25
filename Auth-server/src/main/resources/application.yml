@@ -1,0 +1,50 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: "Auth-server"
+  security:
+    oauth2:
+      authorization-server:
+        issuer-url: http://localhost:8090
+        client-urls:
+          - http://192.168.1.179:8080/login/oauth2/code/apm-client
+          - http://192.168.1.4:8080/login/oauth2/code/apm-client
+          - http://127.0.0.1:8080/login/oauth2/code/apm-client
+        client-id: "client"         # дефолтное значение client-id для регистрации клиента
+        client-secret: "secret"     # дефолтное значение client-secret для регистрации клиента
+        apm-id: "apmid"             # дефолтное значение client-id для регистрации программы-оператора, работающей без пользователя
+        apm-secret: "hren-ugadaesh" # дефолтное значение client-secret для регистрации программы-оператора, работающей без пользователя
+
+  output:
+    ansi:
+      enabled: ALWAYS
+
+  # H2 database
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testDb
+    username: sa
+    password:
+
+  # Spring Jpa Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      hibernate.highlight_sql: true
+  # автозапуск скриптов 'schema.sql' и 'data.sql'
+  sql:
+    init:
+      mode: always                                  # всегда
+
+
+
+#logging:
+#  level:
+#    org.springframework.security.oauth2: TRACE
+#    org.springframework.security: TRACE
+#    org.springframework.web: TRACE
